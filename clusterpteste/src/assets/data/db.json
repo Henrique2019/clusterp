@@ -1,0 +1,14 @@
+{
+  "clusts": [
+    {
+      "descricao": "calça jeans",
+      "n_grupo": "calça",
+      "id": 1
+    },
+    {
+      "descricao": "camisa branca",
+      "n_grupo": "camisa",
+      "id": 2
+    }
+  ]
+}

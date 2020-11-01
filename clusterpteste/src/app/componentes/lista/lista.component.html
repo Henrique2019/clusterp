@@ -1,0 +1,33 @@
+<p>lista works!</p>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Produtos</li>
+  </ol>
+</nav>
+<div class="container">
+  <div class="card list-car">
+    <h5 class="card-header">Lista de Produtos</h5>
+    <div class="card-body">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">descrição</th>
+              <th scope="col">n_grupo</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let Clust of Clusts">
+              <td>{{Clust.id}}</td>
+              <td>{{Clust.descricao}}</td>
+              <td>{{Clust.n_grupo}}</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm" (click)="editClusts(Clust)">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteClusts(Clust)">Deletar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
