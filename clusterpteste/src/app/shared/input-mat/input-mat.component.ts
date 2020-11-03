@@ -2,19 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { SubGrupoModel } from 'src/app/models/sub-grupo-model';
 import { ClustService } from 'src/app/service/clust.service';
 import { NgForm } from '@angular/forms';
+/**
+ * @title Input with hints
+ */
 
 @Component({
-  selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css']
+  selector: 'app-input-mat',
+  templateUrl: './input-mat.component.html',
+  styleUrls: ['./input-mat.component.css']
 })
-export class AddComponent implements OnInit {
+export class InputMatComponent implements OnInit {
 
   Clust = {} as SubGrupoModel;
   Clusts: SubGrupoModel[];
 
   constructor(private ClustService: ClustService) {}
-
 
   ngOnInit() {
     this.getClusts();
@@ -32,31 +34,17 @@ export class AddComponent implements OnInit {
       });
     }
   }
-
-  // Chama o serviço para obtém todos os Item
+  // Chama o serviço para obtém todos os Itens
   getClusts() {
     this.ClustService.getClusts().subscribe((Clusts: SubGrupoModel[]) => {
       this.Clusts = Clusts;
     });
   }
-
-  // deleta um Item
-  deleteClusts(Clust: SubGrupoModel) {
-    this.ClustService.deleteClusts(Clust).subscribe(() => {
+    // limpa o formulario
+    cleanForm(form: NgForm) {
       this.getClusts();
-    });
-  }
-
-  // copia o Item para ser editado.
-  editClusts(Clust: SubGrupoModel) {
-    this.Clust = { ...Clust };
-  }
-
-  // limpa o formulario
-  cleanForm(form: NgForm) {
-    this.getClusts();
-    form.resetForm();
-    this.Clust = {} as SubGrupoModel;
-  }
+      form.resetForm();
+      this.Clust = {} as SubGrupoModel;
+    }
 
 }
