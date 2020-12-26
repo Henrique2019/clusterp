@@ -1,0 +1,19 @@
+{
+  "clusts": [
+    {
+      "descricao": "camisa branca",
+      "n_grupo": "camisa",
+      "id": 2
+    },
+    {
+      "descricao": "calça jeans",
+      "n_grupo": "calça",
+      "id": 1003
+    },
+    {
+      "descricao": "henrique ronald",
+      "n_grupo": "camisa",
+      "id": 1004
+    }
+  ]
+}

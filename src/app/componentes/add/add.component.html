@@ -1,0 +1,163 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Produtos</li>
+  </ol>
+</nav>
+  <div class="card add-car">
+      <h5 class="card-header">Adicionar/Atualizar Produtos</h5>
+      <div class="container">
+          <form action="http://localhost:8080/artigo/" method="POST" id="add-form" (ngSubmit)="f.form.valid && saveClusts(f)" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="model">Qual o seu Nome</label>
+                <input type="text" [(ngModel)]="Clust.name" id="name" name="name" #name="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" placeholder="">
+                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                    <div *ngIf="name.errors.required">Campo obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="color">Qual o seu e-mail</label>
+                <input type="text" [(ngModel)]="Clust.email" id="n-grupo" name="email" #email="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" placeholder="">
+                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                    <div *ngIf="email.errors.required">Campo Obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="color">qual o seu website</label>
+              <input type="text" [(ngModel)]="Clust.site" id="n-grupo" name="site" #site="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && site.invalid }" placeholder="">
+              <div *ngIf="f.submitted && site.invalid" class="invalid-feedback">
+                  <div *ngIf="site.errors.required">Campo Obrigatório</div>
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="color">Qual é o seu cargo?</label>
+            <select type="text" [(ngModel)]="Clust.Cargo" id="n-grupo" name="Cargo" #Cargo="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && Cargo.invalid }" placeholder=""><option selected="selected" value="Selecione">Selecione</option>
+              <option value="Sócio / CEO / Proprietário">Sócio / CEO / Proprietário</option>
+              <option value="Diretor">Diretor</option>
+              <option value="Gerente de Marketing">Gerente de Marketing</option>
+              <option value="Gerente de Vendas">Gerente de Vendas</option>
+              <option value="Coordenador/Supervisor de Marketing">Coordenador/Supervisor de Marketing</option>
+              <option value="Coordenador/Supervisor de Vendas">Coordenador/Supervisor de Vendas</option>
+              <option value="Analista/Assistente de Marketing">Analista/Assistente de Marketing</option>
+              <option value="Analista/Assistente de Vendas">Analista/Assistente de Vendas</option>
+              <option value="Vendedor / Executivo de Contas">Vendedor / Executivo de Contas</option>
+              <option value="Estudante">Estudante</option>
+              <option value="Outros Cargos">Outros Cargos</option></select>
+            <div *ngIf="f.submitted && Cargo.invalid" class="invalid-feedback">
+                <div *ngIf="Cargo.errors.required">Campo Obrigatório</div>
+            </div>
+        </div>
+
+
+
+            <!-- Bloco 2 -->
+          <div class="form-group">
+            <label for="color">qual o nome da Persona</label>
+            <input type="text" [(ngModel)]="Clust.nome" id="n-grupo" name="nome" #nome="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }" placeholder="Ex: maria paula">
+            <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
+                <div *ngIf="nome.errors.required">Campo Obrigatório</div>
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="color">imagem</label>
+          <input type="text" [(ngModel)]="Clust.img" id="n-grupo" name="img" #img="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && img.invalid }" placeholder="selecione">
+          <div *ngIf="f.submitted && img.invalid" class="invalid-feedback">
+              <div *ngIf="img.errors.required">Campo Obrigatório</div>
+          </div>
+      </div>
+
+      <!-- Bloco 3 -->
+    <div class="form-group">
+      <label for="color">idade</label>
+      <input type="text" [(ngModel)]="Clust.idade" id="n-grupo" name="idade" #idade="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && idade.invalid }" placeholder="Digite a idade da persona">
+      <div *ngIf="f.submitted && idade.invalid" class="invalid-feedback">
+          <div *ngIf="idade.errors.required">Campo Obrigatório</div>
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="color">Sexo</label>
+    <select type="text" [(ngModel)]="Clust.genero" id="n-grupo" name="genero" #genero="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && genero.invalid }" placeholder=""><option selected="selected" value="Feminino">Feminino</option>
+      <option value="Masculino">Masculino</option></select>
+    <div *ngIf="f.submitted && genero.invalid" class="invalid-feedback">
+        <div *ngIf="genero.errors.required">Campo Obrigatório</div>
+    </div>
+</div>
+<div class="form-group">
+  <label for="color">midia</label>
+  <input type="text" [(ngModel)]="Clust.midia" id="n-grupo" name="midia" #midia="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && midia.invalid }" placeholder="Ex. whatsapp , jornais, revistas .">
+  <div *ngIf="f.submitted && midia.invalid" class="invalid-feedback">
+      <div *ngIf="midia.errors.required">Campo Obrigatório</div>
+  </div>
+</div>
+  <!-- Bloco 4 -->
+<div class="form-group">
+  <label for="color">Empresa em que Trabalha</label>
+  <input type="text" [(ngModel)]="Clust.EmpresaQueTrabalha" id="n-grupo" name="EmpresaQueTrabalha" #EmpresaQueTrabalha="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && EmpresaQueTrabalha.invalid }" placeholder="Digite o nome da empresa">
+  <div *ngIf="f.submitted && EmpresaQueTrabalha.invalid" class="invalid-feedback">
+      <div *ngIf="EmpresaQueTrabalha.errors.required">Campo Obrigatório</div>
+  </div>
+</div>
+<div class="form-group">
+  <div class="form-group">
+    <label for="color">Qual o cargo/ocupação da persona</label>
+    <input type="text" [(ngModel)]="Clust.ocupacao" id="ocupacao" name="ocupacao" #ocupacao="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && ocupacao.invalid }" placeholder="">
+    <div *ngIf="f.submitted && ocupacao.invalid" class="invalid-feedback">
+        <div *ngIf="ocupacao.errors.required">Campo Obrigatório</div>
+    </div>
+</div>
+  <label for="color">escolaridade</label>
+  <select type="text" [(ngModel)]="Clust.escolaridade" id="n-grupo" name="escolaridade" #escolaridade="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && escolaridade.invalid }" placeholder=" "><option value="Ensino médio">Ensino médio</option>
+    <option value="Ensino técnico">Ensino técnico</option>
+    <option selected="selected" value="Ensino superior">Ensino superior</option>
+    <option value="Mestrado">Mestrado</option>
+    <option value="Doutorado">Doutorado</option>
+    <option value="Pós-doutorado">Pós-doutorado</option></select>
+  <div *ngIf="f.submitted && escolaridade.invalid" class="invalid-feedback">
+      <div *ngIf="escolaridade.errors.required">Campo Obrigatório</div>
+  </div>
+</div>
+<div class="form-group">
+  <label for="color">renda</label>
+  <input type="text" [(ngModel)]="Clust.renda" id="n-grupo" name="renda" #renda="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && renda.invalid }" placeholder="ex: 1.500,00">
+  <div *ngIf="f.submitted && renda.invalid" class="invalid-feedback">
+      <div *ngIf="renda.errors.required">Campo Obrigatório</div>
+  </div>
+</div>
+  <!-- Bloco 5 -->
+<div class="form-group">
+  <label for="color">Principais Objtivos</label>
+  <textarea type="text" [(ngModel)]="Clust.PrincipaisObjtivos" id="n-grupo" name="PrincipaisObjtivos" #PrincipaisObjtivos="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && PrincipaisObjtivos.invalid }" placeholder=""></textarea>
+  <div *ngIf="f.submitted && PrincipaisObjtivos.invalid" class="invalid-feedback">
+      <div *ngIf="PrincipaisObjtivos.errors.required">Campo obrigatório</div>
+  </div>
+</div>
+<div class="form-group">
+  <label for="color">Problemas Desafios</label>
+  <textarea type="text" [(ngModel)]="Clust.ProblemasDesafios" id="n-grupo" name="ProblemasDesafios" #ProblemasDesafios="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && ProblemasDesafios.invalid }" placeholder=""></textarea>
+  <div *ngIf="f.submitted && ProblemasDesafios.invalid" class="invalid-feedback">
+      <div *ngIf="ProblemasDesafios.errors.required">Campo obrigatório</div>
+  </div>
+</div>
+<div class="form-group">
+  <label for="color">Ajuda Empresa</label>
+  <textarea type="text" [(ngModel)]="Clust.AjudaEmpresa" id="n-grupo" name="AjudaEmpresa" #AjudaEmpresa="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && AjudaEmpresa.invalid }" placeholder=""></textarea>
+  <div *ngIf="f.submitted && AjudaEmpresa.invalid" class="invalid-feedback">
+      <div *ngIf="AjudaEmpresa.errors.required">Campo obrigatório</div>
+  </div>
+</div>
+            <button type="submit" class="btn btn-primary s">Salvar</button>
+            <button type="reset" class="btn btn-secondary c" (click)="cleanForm(f)">Cancelar</button>
+          </form>
+      </div>
+    </div>
+
+
+  <!-- Start of Async HS Code -->
+  <script type="text/javascript">
+    (function(d,s,i,r) {
+      if (d.getElementById(i)){return;}
+      var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+      n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/355484.js';
+      e.parentNode.insertBefore(n, e);
+    })(document,"script","hs-analytics",300000);
+  </script>
+    <app-input-mat></app-input-mat>

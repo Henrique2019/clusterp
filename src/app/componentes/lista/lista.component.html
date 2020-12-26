@@ -1,0 +1,91 @@
+
+
+<div class="container-fluid">
+
+	<h2 class="text-center">
+		List of Clients <i class="fa fa-list"></i>
+	</h2>
+
+	<h5 class="text-right">
+		<a href="cadastrar" class="btn btn-primary btn-xs">
+			<i class="fa fa-user-plus"></i>
+		</a>
+	</h5>
+
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead class="thead">
+				<tr>
+
+					<th>ID</th>
+					<th>NOME</th>
+					<th>E-MAIL</th>
+					<th>website</th>
+					<th>nome da persona</th>
+					<th>imagem</th>
+          <th>cargo da persona</th>
+          <th>idade</th>
+          <th>genero</th>
+          <th>midia</th>
+          <th>EmpresaQueTrabalha</th>
+          <th>ocupacao</th>
+          <th>escolaridade</th>
+          <th>renda</th>
+          <th>PrincipaisObjtivos</th>
+          <th>ProblemasDesafios</th>
+          <th>AjudaEmpresa</th>
+
+					<th colspan="6">AÇÕES</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr *ngFor="let Clust of Clusts, index as id">
+          <th scope="row">{{ id + 1 }}</th>
+
+					<td>{{Clust.name}}</td>
+					<td>{{Clust.email}}</td>
+					<td>{{Clust.site}}</td>
+					<td>{{Clust.nome}}</td>
+					<td>{{Clust.img}}</td>
+          <td>{{Clust.Cargo}}</td>
+          <td>{{Clust.idade}}</td>
+          <td>{{Clust.genero}}</td>
+          <td>{{Clust.midia}}</td>
+          <td>{{Clust.EmpresaQueTrabalha}}</td>
+          <td>{{Clust.ocupacao}}</td>
+          <td>{{Clust.escolaridade}}</td>
+          <td>{{Clust.renda}}</td>
+          <td>{{Clust.PrincipaisObjtivos}}</td>
+          <td>{{Clust.ProblemasDesafios}}</td>
+          <td>{{Clust.AjudaEmpresa}}</td>
+					<td>
+						<form method="POST" action="http://localhost:8080/artigo/">
+
+							<input type="hidden" name="id" value="{{Clust._id}}}">
+
+							<button class="btn btn-warning btn-xs">
+								<i class="fa fa-user-edit"></i>
+							</button>
+
+						</form>
+					</td>
+					<td>
+						<form method="POST" action="http://localhost:8080/artigo/" onclick="return confirm('Você tem certeza que deseja excluir ?');">
+
+							<input formmethod="POST" type="hidden" name="id" value="{{Clust._id}}}">
+
+							<button class="btn btn-danger btn-xs">
+								<i class="fa fa-trash"></i>
+							</button>
+
+						</form>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
