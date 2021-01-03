@@ -1,3 +1,7 @@
+
+
+
+import { PdfComponent } from './componentes/pdf/pdf.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddComponent } from './componentes/add/add.component';
 import { ListaComponent } from './componentes/lista/lista.component';
-import { InputMatComponent } from './shared/input-mat/input-mat.component';
+import { DownloadComponent } from './shared/download/download.component';
 import { MaterialModule } from './material.module';
 
 @NgModule({
@@ -17,7 +21,9 @@ import { MaterialModule } from './material.module';
     AppComponent,
     AddComponent,
     ListaComponent,
-    InputMatComponent,
+    PdfComponent,
+    DownloadComponent,
+
 
   ],
   imports: [
@@ -29,6 +35,10 @@ import { MaterialModule } from './material.module';
  BrowserAnimationsModule,
  MaterialModule
 
+  ],
+  exports: [
+    PdfComponent,
+    DownloadComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

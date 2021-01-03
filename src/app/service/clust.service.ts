@@ -9,7 +9,7 @@ import { SubGrupoModel } from 'src/app/models/sub-grupo-model';
 })
 export class ClustService {
 
-  url = 'http://localhost:8080/artigo/'; // api
+  url = 'https://mensuravel.glitch.me/'; // api
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }

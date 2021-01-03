@@ -140,12 +140,14 @@
       true,
       "attribute",
       "app",
+      "hr",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
       "app",
+      "hr"
       "kebab-case"
     ]
   }

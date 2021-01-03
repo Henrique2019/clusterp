@@ -1,10 +1,12 @@
-<nav aria-label="breadcrumb">
+
+<nav aria-label="breadcrumb"style="text-align: center;">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Produtos</li>
+    <li class="breadcrumb-item active"  aria-current="page">Gerador de Persona mensuravel</li>
   </ol>
 </nav>
+
   <div class="card add-car">
-      <h5 class="card-header">Adicionar/Atualizar Produtos</h5>
+      <h3 class="card-header " style="text-align: center;"> preencha o formulario abaixo: </h3>
       <div class="container">
           <form action="http://localhost:8080/artigo/" method="POST" id="add-form" (ngSubmit)="f.form.valid && saveClusts(f)" #f="ngForm" novalidate>
             <div class="form-group">
@@ -68,7 +70,7 @@
       <!-- Bloco 3 -->
     <div class="form-group">
       <label for="color">idade</label>
-      <input type="text" [(ngModel)]="Clust.idade" id="n-grupo" name="idade" #idade="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && idade.invalid }" placeholder="Digite a idade da persona">
+      <input type="text" [(ngModel)]="Clust.idade" id="n-grupo" name="idade"   #idade="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && idade.invalid }" placeholder="Digite a idade da persona">
       <div *ngIf="f.submitted && idade.invalid" class="invalid-feedback">
           <div *ngIf="idade.errors.required">Campo Obrigatório</div>
       </div>
@@ -117,7 +119,7 @@
 </div>
 <div class="form-group">
   <label for="color">renda</label>
-  <input type="text" [(ngModel)]="Clust.renda" id="n-grupo" name="renda" #renda="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && renda.invalid }" placeholder="ex: 1.500,00">
+  <input type="text" [(ngModel)]="Clust.renda" id="n-grupo" name="renda" #renda="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && renda.invalid }" placeholder="ex: 1500">
   <div *ngIf="f.submitted && renda.invalid" class="invalid-feedback">
       <div *ngIf="renda.errors.required">Campo Obrigatório</div>
   </div>
@@ -160,4 +162,4 @@
       e.parentNode.insertBefore(n, e);
     })(document,"script","hs-analytics",300000);
   </script>
-    <app-input-mat></app-input-mat>
+
