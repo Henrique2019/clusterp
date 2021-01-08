@@ -1,6 +1,9 @@
-import { Component, Inject, ViewChild, ElementRef  } from '@angular/core';
-import html2canvas from 'html2canvas';
+import { Component, ViewChild, ElementRef  } from '@angular/core';
+import { SubGrupoModel } from 'src/app/models/sub-grupo-model';
+import { ClustService } from 'src/app/service/clust.service';
+
 import * as jsPDF from 'jspdf'
+import { NgForm } from '@angular/forms';
 
 
 
@@ -12,31 +15,74 @@ import * as jsPDF from 'jspdf'
 
 export class PdfComponent  {
 
+  Clust = {} as SubGrupoModel;
+  Clusts: SubGrupoModel[];
+
+  trackById(index: number, Clust: ClustService): number { return Clust._id; }
+  constructor(private ClustService: ClustService) {}
 
 
+  ngOnInit() {
+    this.getClusts();
+  }
 
-  @ViewChild('content', {static: false}) content: ElementRef;
+  // defini se um Item será criado ou atualizado
+  saveClusts(form: NgForm) {
+    if (this.Clust._id !== undefined) {
+      this.ClustService.updateClusts(this.Clust).subscribe(() => {
+        this.cleanForm(form);
+      });
+    } else {
+      this.ClustService.saveClusts(this.Clust).subscribe(() => {
+        this.cleanForm(form);
+      });
+    }
+  }
+
+  // Chama o serviço para obtém todos os Item
+  getClusts() {
+    this.ClustService.getClusts().subscribe((Clusts: SubGrupoModel[]) => {
+      this.Clusts = Clusts;
+    });
+  }
+
+  // deleta um Item
+  deleteClusts(Clust: SubGrupoModel) {
+    this.ClustService.deleteClusts(Clust).subscribe(() => {
+      this.getClusts();
+    });
+  }
+
+  // copia o Item para ser editado.
+  editClusts(Clust: SubGrupoModel) {
+    this.Clust = { ...Clust };
+  }
+
+  // limpa o formulario
+  cleanForm(form: NgForm) {
+    this.getClusts();
+    form.resetForm();
+    this.Clust = {} as SubGrupoModel;
+  }
+  @ViewChild('content',{static: false}) content: ElementRef;
+
+  downloadPDF() {
+    const options = {
+      background: 'white',
+      height : 1000,
+      width : 700,
+      //height : 900,
+      //width : 700,
+    };
 
 
-  public downloadPDF() {
+    let doc = new jsPDF();
+
     const div = document.getElementById('content');
+    doc.setFontSize(40);
+    doc.addHTML(div, 0, 3, options,() => {
 
-    html2canvas(div).then((canvas) => {
-
-
-
-      var imgWidth = 290;
-      var imgHeight = 206;
-      var imgHeight = canvas.height * imgWidth / canvas.width;
-
-      const imgData = canvas.toDataURL("image/PNG");
-
-      let doc = new jsPDF('p', 'mm', 'a4');
-      const position = 10;
-
-    doc.addImage(imgData,'jpeg', 0, position, imgWidth, imgHeight, 0, 'NONE', 0,);
-
-    doc.save('persona.pdf');
-  });
+       doc.save("Persona.pdf");
+    });
  }
 }
